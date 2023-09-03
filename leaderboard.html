@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <title>MIntRec</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--   CSS IMPORTS   -->
+        <link rel="stylesheet" href="static/styles/index.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/hk-grotesk" type="text/css"/>
+        <!-- <link rel="icon" href="static/images/favicon.png">   标题logo-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+        <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet"> 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+         <!--   JS IMPORTS   -->
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js" integrity="sha256-iaqfO5ue0VbSGcEiQn+OeXxnxAMK2+QgHXIDA5bWtGI=" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js" integrity="sha256-Gn7MUQono8LUxTfRA0WZzJgTua52Udm1Ifrk5421zkA=" crossorigin="anonymous"></script>
+        <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+   
+        <!-- 新 Bootstrap 核心 CSS 文件 -->
+<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+ 
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+ 
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- 引入 layui.css -->
+<link rel="stylesheet" href="//unpkg.com/layui@2.6.8/dist/css/layui.css">
+ 
+<!-- 引入 layui.js -->
+<script src="//unpkg.com/layui@2.6.8/dist/layui.js">    </script>
+    <!-- 引入 layui.css -->
+<link href="//unpkg.com/layui@2.7.6/dist/css/layui.css" rel="stylesheet">
+ 
+<!-- 引入 layui.js -->
+<script src="//unpkg.com/layui@2.7.6/dist/layui.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+
+</script>
+      </head>
+      <div hidden="hidden">
+        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        本站访客数<span id="busuanzi_value_site_uv"></span>人次
+        本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+      </div>
+      
+      <style>
+        .layui-nav .layui-this:after, .layui-nav-bar{
+          background-color: white;
+        }
+        .layui-nav{
+          background-color: #4371C6;
+        }
+        p.rank{
+          padding-left:30px;
+        }
+        body {
+          font-family: 'HankenGroteskRegular';
+          background-color:white;
+        }
+      </style>
+      <body>
+        
+        <script>
+          function raw_data(){
+          window.location.href="raw_data.html"
+        }
+        function Features(){
+          window.location.href="Features_1.html"
+        }
+        function Fork_On_Github(){
+          window.location.href="Fork_On_Github.html"
+        }
+        </script>
+        
+        <ul class="layui-nav"   lay-filter="">
+          <li lay-unselect class="layui-nav-item"><a href="index.html">Home</a></li>
+          <li lay-unselect class="layui-nav-item  layui-this"><a href="leaderboard.html">Leaderboard</a></li>
+        </ul>
+         
+        <script>
+        //注意：导航 依赖 element 模块，否则无法进行功能性操作
+        layui.use('element', function(){
+          var element = layui.element;
+          
+          //…
+        });
+        </script>
+              
+      <div class="container">
+        
+          <div class="row">
+            
+            <div class="col-md-3 box " style="position:fixed">
+              
+              <h3 style="font-weight: 600; line-height: 1.3">MIntRec: Multimodal Intent Recognition </h3>
+              <br>
+              <p style='margin: 0 0 10px; color:#595959; font-weight: 400;font:18px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";'>
+                A New Dataset for Multimodal Intent Recognition</p>
+              <hr>
+              <br>
+              <div style="margin-top: 20rpx; position: relative;height: 20rpx ;"> 
+                <a style="color: #39c;  " href="https://github.com/thuiar/MIntRec">View the Project on GitHub</a>
+              </div>
+              <br>
+                <div  style="margin-top: 20rpx;"> 
+                <a  style="color: #39c;" href="https://dl.acm.org/doi/10.1145/3503161.3547906">Download the paper</a>
+              </div>
+          
+
+         
+              <br>
+              <br>
+                <center>
+                  <style>
+                    #my_button_left.btn-default{
+                      border-top-left-radius:5px !important; 
+                      border-bottom-left-radius: 5px !important;
+                    }
+
+                    #my_button_right.btn-default{
+                      border-top-right-radius:5px !important; 
+                      border-bottom-right-radius: 5px !important;
+                    }
+                  </style>
+                  <div   class="" role="group"  >
+                    <button id='my_button_left' onclick="raw_data()" type="button" class="btn btn-default col-md-3 ">
+                      <!-- style="background-color: #999"; -->
+                    
+                        <!-- href="https://drive.google.com/drive/folders/18iLqmUYDDOwIiiRbgwLpzw76BD62PK0p" -->
+                        <p style='  color:#595959; font-weight: 400;font:15px -apple-system'>
+                          Download
+                        </p>
+                      
+                   
+                      
+                          <strong >Raw Data</strong> 
+                      
+                      </button>
+                    <button onclick="Features()" type="button" class="btn btn-default col-md-3" >
+                    <!-- <a href="https://drive.google.com/drive/folders/18iLqmUYDDOwIiiRbgwLpzw76BD62PK0p"> -->
+                      <p style='  color:#595959; font-weight: 400;font:15px -apple-system'>
+                        Download
+                      </p>
+                      <strong> Features </strong>
+                   
+                    </button>
+                    <button id='my_button_right' onclick="Fork_On_Github()" type="button" class="btn btn-default col-md-3">
+                      <!-- <a href="https://github.com/thuiar/MIntRec"> -->
+                      <p style='  color:#595959; font-weight: 400;font:15px -apple-system'>
+                        Fork On
+                      </p>
+                      <strong>Github </strong>
+                   
+                      </button>
+                  </div>
+                </center>
+             	 
+            </div>
+
+
+
+
+
+              <div class="col-md-7 box layui-col-md-offset5" >
+                <div id="container" style="width: 100%"></div>
+               
+             
+                      <style>
+                        #mytable tbody td{
+                          font-weight: 300;
+                            border-right-style:none;
+                            border-left-style:none;
+                            border-top-style: none;
+                        }
+                        #mytable thead td{
+                         
+                            font-size: 15;
+                            font-weight: 600;
+                            background-color: #4371C6;
+                            color: white;
+                            border-right-style:none;
+                            border-left-style:none;
+                            border-top-style: none;
+
+                        }
+                        #best   td{
+                          font-weight: 800  !important
+                        }
+                     
+                    </style>
+                    <script>
+                      
+                      function show(obj){
+                        $("#1").css("font-weight","1000");
+                        //document.getElementById("#1").style="font-weight:1000 !important";
+                        $("#leaderboard_table").empty();
+                        index=Number(obj.charAt(obj.length-1))
+
+                        $.getJSON("acc.json", function(data) {
+                        
+                        score_all=new Map()
+                        sort_pre=[]
+                        
+                        i=0
+                        for (k in data){
+                          
+                          
+                          console.log('type: ',index)
+                          sort_pre.push(data[k][index])
+                          score_all.set(String(i) , data[k][index])
+                          i=i+1
+                        }
+                        
+                        console.log('before sort: ',score_all)
+                        var arrayObj=Array.from(score_all);
+                        arrayObj.sort(function(a,b){return b[1]-a[1]})
+                        console.log('after sort : ',arrayObj.sort(function(a,b){return b[1]-a[1]}))
+                      
+                        sort_after = [...new Map(arrayObj.map(i => [i[0], i[1]])).keys()]
+                        console.log(sort_after)
+                        new_data = []
+
+                        for(q of sort_after){
+                          console.log(q)
+                          new_data.push(data[q])
+                        }
+                        
+                        console.log(new_data)
+                        count=1
+                            for(k in new_data){
+                            //  console.log(k)
+                            // console.log(data[k])
+                              
+                            // html += '<option value="'+key+'">'+data[key]+'</option>';
+                                $("#leaderboard_table").append("<tr>")
+                              
+                                // for(var i = 0; i<data.length;i++){
+                                if (count==1){
+                                  $("#leaderboard_table").append("<td style='font-weight: 800  !important'><i style='font-size: 2rem; 'class='bi bi-"+String(count) +"-circle'></i></td>");
+                                }
+                                else{
+                                  $("#leaderboard_table").append("<td ><i style='font-size: 2rem; 'class='bi bi-"+String(count) +"-circle'></i></td>");
+                                }
+                                
+                                for(var j = 0; j<5;j++){
+                                  if (count==1){
+                                    $("#leaderboard_table").append("<td style='font-weight: 800  !important'>"+new_data[k][Number(j) ]+"</td>");
+                                  }
+                                  else{
+                                    $("#leaderboard_table").append("<td>"+new_data[k][Number(j) ]+"</td>");
+                                  }
+                                }
+                                $("#leaderboard_table").append("</tr>")
+                                // }
+                              count ++
+                            }
+                        })
+                      }
+                    </script>
+                    <br>
+                      <table id='mytable' class="layui-table"  >
+                        
+                        <thead >
+                          <tr>
+                            <td class="col-md-1"><i style="font-size: 3rem; color: white;" class="bi bi-trophy"></i></td>
+                            <td class="col-md-3">Leaderboard</td>
+                           
+                            <td onclick="show('acc1')" id='1'>ACC</td>
+                            <td onclick="show('f12')" id='2'>F1</td>
+                            <td onclick="show('p3')" id='3'>Precision</td>
+                            <td onclick="show('r4')" id='4'>Recall</td>
+                             
+                          </tr>
+                        </thead>
+                        <tbody id='leaderboard_table'>
+                          
+                          
+                          <tr id = 'best' >
+                            <td><i style="font-size: 2rem; "class="bi bi-1-circle"></i></td>
+                            <td>MAG-BERT</td>
+                            <td>72.65</td>
+                            <td>68.64</td>
+                            <td>69.08</td>
+                            <td>69.28</td>
+                          
+                          </tr>
+                          <tr>
+                            <td><i  style="font-size: 2rem; "class="bi bi-2-circle"></i></td>
+                            <td>Mult</td>
+                            <td>72.52</td>
+                            <td>69.25</td>
+                            <td>70.25</td>
+                            <td>69.24</td>
+                          
+                          </tr>
+                          <tr>
+                            <td><i  style="font-size: 2rem; "class="bi bi-3-circle"></i></td>
+                            <td>MISA</td>
+                            <td>72.29</td>
+                            <td>69.32</td>
+                            <td>70.85</td>
+                            <td>69.24</td>
+                          
+                          </tr>
+                          <tr>
+                            <td><i  style="font-size: 2rem; "class="bi bi-4-circle"></i></td>
+                            <td>Classifier</td>
+                            <td>70.88</td>
+                            <td>67.40</td>
+                            <td>68.07</td>
+                            <td>67.44</td>
+                          
+                          </tr>
+                          
+                        </tbody>
+                      </table>
+                  </div>
+                  
+
+
+
+
+                </div>
+            
+                
+              
+            </div>
+            <script>
+              window.addEventListener('load',function(){
+                $.getJSON("count.json", function(data) {
+				          console.log(data);})
+
+                })
+                
+            function readTxt() {
+              
+                $.get('tite.txt',function(data) {    
+                    var lines = data.split("\n"); //按行读取
+                
+                    $.each(lines,function(i, v) {
+                        console.log(v);
+                    });
+                });
+            }
+
+            </script>
+          </body>
+      </html>
+<script type="text/javascript">
+  (function($) {
+    var LEADERBOARD_JSON = 'https://hucvl.github.io/recipeqa/leaderboard.json';
+    var template = $('#template').html();
+    Mustache.parse(template);
+    var test = [];
+    var submissions = [];
+    var ms_data = {
+        submissions:[],
+      };
+    $.getJSON(LEADERBOARD_JSON).done(function (data) {
+      for (var i = 0; i < data.leaderboard.length; i++) {
+            if(data.leaderboard[i].scores.textual_cloze != null || data.leaderboard[i].scores.visual_cloze != null || 
+              data.leaderboard[i].scores.visual_coherence != null || data.leaderboard[i].scores.visual_ordering != null){
+                test.push(data.leaderboard[i])
+            }
+          }
+      for (var i = 0; i < test.length; i++){
+            ms_data['submissions'].push(test[i])
+            var item = test[i];
+            item.rank = i + 1;
+            item.scores['textual_cloze']=parseFloat(item.scores['textual_cloze']).toFixed(3)
+            item.scores['visual_coherence']=parseFloat(item.scores['visual_coherence']).toFixed(3)
+            item.scores['visual_cloze']=parseFloat(item.scores['visual_cloze']).toFixed(3)
+            item.scores['visual_ordering']=parseFloat(item.scores['visual_ordering']).toFixed(3)
+            var submission = item["submission"]
+            var created = item['submission']['created']
+            var submissionInfo = item['submission']['description'];
+            item.created = moment.unix(created).format('MMM DD, YYYY');
+            item.config = data.config;
+        }
+        var rendered = Mustache.render(template, ms_data);
+        $('#container').html(rendered);
+          }).fail(function () {
+            $('#container').html('This leaderboard is not ready yet.');
+          });
+        })(jQuery);
+ </script>

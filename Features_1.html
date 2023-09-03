@@ -1,0 +1,39 @@
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</script>
+<script src="//code.bdstatic.com/npm/leancloud-storage@4.12.0/dist/av-min.js"></script>
+      <style>
+      
+        body {
+          font-family: 'HankenGroteskRegular';
+          background-color:white;
+        }
+      </style>
+      <body>
+        
+        <div hidden='hidden'>
+          下载量<span id="busuanzi_value_page_pv"></span>次
+        </div>
+        
+        <script language="javascript" type="text/javascript">   
+         
+            window.location.href = 'https://drive.google.com/uc?export=download&id=1CYZV2tCDMQoGQ9lBcjuAInyzVrfskJnT';
+            const { Query, User } = AV;
+          AV.init({
+          appId: "M9Q7oCWnnOg1lywIzxb8WbNJ-gzGzoHsz",
+          appKey: "HcE6O8qAIrWgqDKFLF9KDUzN",
+          serverURL: "https://m9q7ocwn.lc-cn-n1-shared.com"
+        });
+          const queryAll = new AV.Query('count_class');	// Data为Class名
+           
+
+
+          const data = new AV.Object('count_class');
+            data.set('type', 'features');
+            data.set('count', 1);
+          
+            data.save().then((data) => {
+               
+              
+        });
+        </script>
+      </body>
